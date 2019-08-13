@@ -1,5 +1,6 @@
 package testbase;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeSuite;
@@ -11,7 +12,7 @@ import java.util.concurrent.TimeUnit;
 
 public class TestBase {
     protected RemoteWebDriver driver;
-
+    //protected WebDriver driver;
     @BeforeTest(alwaysRun = true)
     public void setup(){
     InitiateDriver initiateDriver = new InitiateDriver();

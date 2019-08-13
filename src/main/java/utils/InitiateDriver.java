@@ -6,6 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.net.URL;
 import java.util.Properties;
@@ -16,27 +17,32 @@ import java.util.concurrent.TimeUnit;
 public class InitiateDriver {
     private RemoteWebDriver driver;
 
+    //private WebDriver driver;
+
     //This constructor will be invoked when the object of the class is created in TestBase class
     public InitiateDriver(){
         try {
 
-            //setDriverPath();
+            setDriverPath();
+//            File directory = new File("./src/main/resources/config.properties");
+//            System.out.println(" ashwi "+directory.getAbsolutePath());
 
-            //Taking Remote webdriver server URL value from the congig.properties file
-            FileInputStream file = new FileInputStream("/Users/ashwi/Downloads/booking/src/main/resources/config.properties");
+            //Taking Remote webdriver server URL value from the config.properties file
+            FileInputStream file = new FileInputStream("./src/main/resources/config.properties");
             Properties prop = new Properties();
             prop.load(file);
             String seleniumServer = prop.getProperty("SELENIUMSERVERURL");
-            DesiredCapabilities capabilities =  DesiredCapabilities.chrome();
+
 
             //For firefox browser
            // DesiredCapabilities capabilities =  DesiredCapabilities.firefox();
 
             //using RemoteWebdriver, Need to start Remotewebdriver server in port number 4444 in your local machine.
+            DesiredCapabilities capabilities =  DesiredCapabilities.chrome();
             driver = new RemoteWebDriver(new URL(seleniumServer),capabilities);
 
-            //Did not use Chromdriver
-           // WebDriver driver = new ChromeDriver();
+
+             //driver = new ChromeDriver();
             driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 
 
@@ -48,7 +54,7 @@ public class InitiateDriver {
 
     }
 
-    //This method will be called if driver is not instantiated
+  //  This method will be called if driver is not instantiated
     public RemoteWebDriver getDriver()
     {
         if(driver==null)
@@ -58,7 +64,7 @@ public class InitiateDriver {
     }
 
 
-    //Not required, since I have used Remote Webdriver
+
     private void setDriverPath() {
         if (PlatformUtil.isMac()) {
             System.setProperty("webdriver.chrome.driver", "chromedriver");

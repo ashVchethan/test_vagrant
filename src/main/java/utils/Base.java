@@ -1,5 +1,6 @@
 package utils;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -9,7 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class Base {
     public static long wait=60;
     public static RemoteWebDriver driver;
-
+    //public static WebDriver driver;
 
     //this method is to check whether element is visible
     public static boolean isElementVisible(WebElement element) {

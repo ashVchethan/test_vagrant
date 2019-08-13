@@ -44,3 +44,10 @@ Comment:
 8. JDK used is 1.8v
 9. IDE used is IntelliJIDEA
 
+
+changes in 2nd commit:
+----------------------------------
+1. Changed "config.properties" path to relative path in FileInputStream in InitiateDriver class.
+2. Added windows chromedriver.exe and chromedriver_linux driver in the project.
+3. Do start RemoteWebdriver before running this project
+
